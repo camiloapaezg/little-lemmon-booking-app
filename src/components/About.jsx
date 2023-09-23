@@ -1,9 +1,9 @@
-const About = ()=>{
-    return(
-    <section>
-        <h1>About</h1>
-    </section>
-    );
-}
+const About = () => {
+  return (
+    <div className="section-home section-about">
+      <h1>About</h1>
+    </div>
+  );
+};
 
 export default About;

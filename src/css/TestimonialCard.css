@@ -1,0 +1,29 @@
+#testimonial-card-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "testimonial-card-rating testimonial-card-rating"
+    "testimonial-card-image testimonial-card-name"
+    "testimonial-card-review testimonial-card-review";
+    padding: 1em;
+    background-color: rgb(255, 255, 255);
+    width: 10em;
+    height: auto;
+}
+
+#testimonial-card-rating{
+    grid-area: testimonial-card-rating;
+}
+
+#testimonial-card-image {
+    grid-area: testimonial-card-image;
+}
+
+#testimonial-card-name {
+    grid-area: testimonial-card-name;
+}
+
+#testimonial-card-review {
+    grid-area: testimonial-card-review;
+}

@@ -1,0 +1,22 @@
+#section-testimonials-container{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(73, 94, 87, 1);
+    padding: 1.3em;
+}
+
+#section-testimonials-title{
+    color: rgb(255, 255, 255);
+    margin-top: 1.5em;
+}
+
+#section-testimonials-items{
+    display: flex;
+    flex-flow: row wrap;
+    justify-items: center;
+    align-items: center;
+    gap: 0.8em 2em;
+    padding: 4em;
+}

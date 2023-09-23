@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap');
+
+*{
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: 'Karla', sans-serif;
+}
+
+.home-section-title {
+    margin-left: 0.8em;
+}
+
+.display-title {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.lead-text{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.button-text{
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.card-title{
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.highlight-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card-text{
+    font-size: 16px;
+    font-weight: 400;
+}
+

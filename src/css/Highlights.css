@@ -1,0 +1,23 @@
+#section-highlights-container{
+    max-width: 62em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#section-highlights-title{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3em 1em 0.3em 1em;
+}
+
+#section-highlights-cards{
+    display: flex;
+    padding: 1em;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 0.8em 0.8em;
+}
