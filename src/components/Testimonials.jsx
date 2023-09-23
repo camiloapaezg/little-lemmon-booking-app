@@ -9,10 +9,10 @@ const Testimonials = () => {
         </h2>
       </div>
       <div id="section-testimonials-items">
-        <TestimonialCard />
-        <TestimonialCard />
-        <TestimonialCard />
-        <TestimonialCard />
+        <TestimonialCard rate={5}/>
+        <TestimonialCard rate={1}/>
+        <TestimonialCard rate={3}/>
+        <TestimonialCard rate={2}/>
       </div>
     </div>
   );

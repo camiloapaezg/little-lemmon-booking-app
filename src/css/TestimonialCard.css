@@ -14,6 +14,10 @@
 
 #testimonial-card-rating{
     grid-area: testimonial-card-rating;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 #testimonial-card-image {

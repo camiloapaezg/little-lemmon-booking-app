@@ -26,9 +26,7 @@ const SpecialsPanel = ({ imageUrl, title, price, description }) => {
           <a href="localhost:3000" className="highlight-text">
             Order a delivery
           </a>
-          <i className="material-symbols-outlined" style={{ fontSize: "26px" }}>
-            pedal_bike
-          </i>
+          <span className="material-icons" style={{ fontSize: "26px" }}>pedal_bike</span>
         </div>
       </div>
     </article>

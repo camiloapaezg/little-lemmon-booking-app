@@ -1,11 +1,21 @@
-const TestimonialCard = () => {
+import React from "react";
+
+const Stars = (rate) => {
+  let result = [];
+  for (let i = 0; i < rate; i++) {
+    result.push(<span className="material-icons">star_rate</span>);
+  }
+  return result;
+};
+
+const TestimonialCard = ({ rate }) => {
   return (
     <div
       id="testimonial-card-container"
       className="box-shadow animate-highlight"
     >
       <div id="testimonial-card-rating">
-        <h5 className="card-title">five stars</h5>
+        {React.Children.map(Stars(rate), (star)=>(star))}
       </div>
       <div id="testimonial-card-image">
         <figure>

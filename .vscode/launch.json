@@ -5,9 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "name": "Launch localhost",
+            "type": "firefox",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "reAttach": true,
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name" : "Launch with Edge",
+            "type": "msedge",
+            "request" : "launch",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
         }
