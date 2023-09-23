@@ -10,7 +10,7 @@ const Highlights = () => {
           <h2 className="subtitle">Specials</h2>
         </div>
         <div>
-          <button type="button" className="button-hero-section button-text">
+          <button type="button" className="button-yellow button-text">
             Online Menu
           </button>
         </div>

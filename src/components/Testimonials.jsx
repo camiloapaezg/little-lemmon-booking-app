@@ -1,6 +1,10 @@
 import TestimonialCard from "./TestimonialCard";
+import { testimonialsData } from "../data/testimonials";
 
 const Testimonials = () => {
+
+  const data = testimonialsData();
+
   return (
     <div id="section-testimonials-container">
       <div>
@@ -9,10 +13,11 @@ const Testimonials = () => {
         </h2>
       </div>
       <div id="section-testimonials-items">
-        <TestimonialCard rate={5}/>
-        <TestimonialCard rate={1}/>
-        <TestimonialCard rate={3}/>
-        <TestimonialCard rate={2}/>
+        {
+          data.map(item => {
+            return <TestimonialCard key={item.name} rate={item.rate} imgSrc={item.imgSrc} name={item.name} review={item.review} />    
+          })
+        }
       </div>
     </div>
   );

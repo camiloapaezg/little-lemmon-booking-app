@@ -17,6 +17,6 @@
     flex-flow: row wrap;
     justify-items: center;
     align-items: center;
-    gap: 0.8em 2em;
+    gap: 0.8em 1em;
     padding: 4em;
 }

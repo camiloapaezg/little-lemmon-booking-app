@@ -2,12 +2,12 @@ const SpecialsPanel = ({ imageUrl, title, price, description }) => {
   return (
     <article>
       <div className="specials-panel-container box-shadow">
-        <div className="specials-panel-image">
+        <div className="specials-panel-image-container">
           <figure>
             <img
               src={imageUrl}
               alt={title}
-              className="panel-image box-shadow"
+              className="specials-panel-image box-shadow"
             />
           </figure>
         </div>
