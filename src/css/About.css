@@ -1,0 +1,43 @@
+#section-about-container{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1.3em;
+    gap: 1em 10em
+}
+
+#section-about-left{
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 20em;
+}
+
+#section-about-right{
+    position: relative;
+    width: 22em;
+    height: 23em;
+}
+
+.section-about-image{
+    width: 12em;
+    border-radius: 8px;
+    height:auto;
+}
+
+#section-about-image-top{
+    position: absolute;
+    left: 10em;
+    z-index: 2;
+    width:auto;
+}
+
+#section-about-image-bottom{
+    display: inline;
+    position: relative;
+    top: 5em;
+    z-index: 1;
+    height:auto;
+}

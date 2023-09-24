@@ -46,5 +46,6 @@
 #testimonial-card-review {
     grid-area: testimonial-card-review;
     max-width: 12em;
-    align-self: stretch;
+    align-self: center;
+    text-align: center;
 }

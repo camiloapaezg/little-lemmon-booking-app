@@ -2,10 +2,11 @@
 @import "HeroSection.css";
 @import "Texts.css";
 @import "Buttons.css";
-@import "SpecialsPanel";
+@import "SpecialsPanel.css";
 @import "Highlights.css";
 @import "Testimonials.css";
 @import "TestimonialCard.css";
+@import "About.css";
 
 * {
   margin: 0px;

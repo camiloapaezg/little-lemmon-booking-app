@@ -9,7 +9,7 @@
 
 #section-testimonials-title{
     color: rgb(255, 255, 255);
-    margin-top: 1.5em;
+    margin-top: 0.5em;
 }
 
 #section-testimonials-items{
@@ -18,5 +18,5 @@
     justify-items: center;
     align-items: center;
     gap: 0.8em 1em;
-    padding: 4em;
+    padding: 2em;
 }
