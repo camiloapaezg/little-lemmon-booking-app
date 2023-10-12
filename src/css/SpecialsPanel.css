@@ -1,67 +1,48 @@
-.specials-panel-container{
-    display:flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: stretch;
-    row-gap: 0.6em;
-    padding: 0.8em;
-    max-width: 280px;
-    background-color:hsl(160, 13%, 53%);
-    border-radius: 8px;
+.specials-panel-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  row-gap: 0.6em;
+  padding: 0.8em;
+  max-width: 280px;
+  background-color: hsl(160, 13%, 53%);
+  border-radius: 8px;
 }
 
-.specials-panel-image-container{
-    align-self: center;
-    overflow: hidden;
-    border-radius: 8px;
-    width: auto;
-    height: 10em;
+.specials-panel-image-container {
+  align-self: center;
+  overflow: hidden;
+  border-radius: 8px;
+  width: auto;
+  height: 10em;
 }
 
-.specials-panel-image{
-    display: block;
-    width: 100%;
-    object-fit: cover;
+.specials-panel-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
 }
 
-.specials-panel-title{
-    display:flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
+.specials-panel-title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.specials-panel-price{
-    border-radius: 8px;
-    background-color: rgb(244, 206, 20);
-    padding: 0.3em;
-    color: black;
+.specials-panel-price {
+  border-radius: 8px;
+  background-color: rgb(244, 206, 20);
+  padding: 0.3em;
+  color: black;
 }
 
-.specials-panel-footer{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding-bottom: 0.3em;
-    column-gap: 1em;
-}
-
-.specials-panel-footer a{
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
-
-.specials-panel-footer a:visited {
-    text-decoration: underline;
-    color:rgb(244, 206, 20);
-}
-
-.specials-panel-footer a:hover {
-    text-decoration: underline;
-}
-
-.specials-panel-footer a:active {
-    text-decoration: underline;
-    color: rgb(244, 206, 20);
+.specials-panel-footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 0.3em;
+  column-gap: 1em;
 }

@@ -1,51 +1,52 @@
-#testimonial-card-container{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas: 
+#testimonial-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
     "testimonial-card-rating testimonial-card-rating"
     "testimonial-card-image testimonial-card-name"
     "testimonial-card-review testimonial-card-review";
-    padding: 1em;
-    background-color: rgb(255, 255, 255);
-    column-gap: 0.8em;
-    row-gap: 0.5em;
+  padding: 1em;
+  background-color: rgb(255, 255, 255);
+  column-gap: 0.8em;
+  row-gap: 0.5em;
+  border-radius: 8px;
 }
 
-#testimonial-card-rating{
-    grid-area: testimonial-card-rating;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    color: gold;
+#testimonial-card-rating {
+  grid-area: testimonial-card-rating;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  color: gold;
 }
 
 #testimonial-card-image {
-    grid-area: testimonial-card-image;
-    border-radius: 100%;
-    overflow: hidden;
-    border: 2px solid rgba(73, 94, 87, 1);
-    width: 6em;
-    height: 6em;
+  grid-area: testimonial-card-image;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid rgba(73, 94, 87, 1);
+  width: 6em;
+  height: 6em;
 }
 
-#testimonial-card-image img{
-    display: block;
-    width: 100%;
-    object-fit:fill;
-    object-position: center;
+#testimonial-card-image img {
+  display: block;
+  width: 100%;
+  object-fit: fill;
+  object-position: center;
 }
 
 #testimonial-card-name {
-    grid-area: testimonial-card-name;
-    width: 6em;
-    align-self: center;
+  grid-area: testimonial-card-name;
+  width: 6em;
+  align-self: center;
 }
 
 #testimonial-card-review {
-    grid-area: testimonial-card-review;
-    max-width: 12em;
-    align-self: center;
-    text-align: center;
+  grid-area: testimonial-card-review;
+  max-width: 12em;
+  align-self: center;
+  text-align: center;
 }

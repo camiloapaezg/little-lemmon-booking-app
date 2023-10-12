@@ -46,9 +46,6 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    #section-hero{
-        padding: 2em;
-    }
     #section-hero-right{
         display: none;
         flex: 0%

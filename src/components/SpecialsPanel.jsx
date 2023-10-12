@@ -1,7 +1,7 @@
 const SpecialsPanel = ({ imageUrl, title, price, description }) => {
   return (
     <article>
-      <div className="specials-panel-container box-shadow">
+      <div className="specials-panel-container box-shadow animate-highlight">
         <div className="specials-panel-image-container">
           <figure>
             <img
@@ -23,10 +23,12 @@ const SpecialsPanel = ({ imageUrl, title, price, description }) => {
           <p className="card-text">{description}</p>
         </div>
         <div className="specials-panel-footer">
-          <a href="localhost:3000" className="highlight-text">
+          <a href="localhost:3000" className="highlight-text anchor-tag">
             Order a delivery
           </a>
-          <span className="material-icons" style={{ fontSize: "26px" }}>pedal_bike</span>
+          <span className="material-icons" style={{ fontSize: "26px" }}>
+            pedal_bike
+          </span>
         </div>
       </div>
     </article>
