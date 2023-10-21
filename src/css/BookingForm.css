@@ -1,0 +1,120 @@
+#booking-form-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding: 0.5em;
+  max-width: 45em;
+  min-width: 7em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-property-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  width: 90%;
+  column-gap: 1em;
+}
+
+.form-property-label {
+  min-width: 10em;
+}
+
+.form-property-input {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  min-width: 10em;
+  max-width: 25em;
+  margin-right: 0.5em;
+}
+
+.input-element {
+  padding: 0.5em;
+  border-radius: 8px;
+  border-color: rgb(73, 94, 87);
+  border-style: ridge;
+  border-width: 2px;
+  background-color: rgb(237, 239, 238);
+  width: 100%;
+}
+
+.input-element-centered {
+  text-align: center;
+}
+
+.input-element:focus {
+  outline: none !important;
+  border: 3px solid rgb(244, 206, 20);
+}
+
+.form-section-title {
+  padding: 0.5em;
+}
+
+.slide-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 2em;
+  width: 100%;
+}
+
+input[type="range"] {
+  display: inline-block;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  min-width: 10em;
+  width: 80%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(73, 94, 87, 1);
+  height: 0.5rem;
+  border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgba(73, 94, 87, 1);
+  height: 0.5rem;
+  border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -0.3rem;
+  border-radius: 100%;
+  background-color: rgb(244, 206, 20);
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  border-radius: 100%;
+  background-color: rgb(244, 206, 20);
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.slider-digit {
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 8px;
+  border-color: rgb(73, 94, 87);
+  border-style: ridge;
+  border-width: 2px;
+  background-color: rgb(237, 239, 238);
+}
+
+@media only screen and (max-width: 1000px) {
+  .form-property-input {
+    display: block;
+  }
+}

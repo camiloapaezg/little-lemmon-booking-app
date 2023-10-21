@@ -1,6 +1,9 @@
-import heroImage from "../assets/hero-image.png";
+import { useNavigate } from "react-router-dom";
+import heroImage from "../../assets/hero-image.png";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <div id="section-hero-container">
       <div id="section-hero-left">
@@ -23,7 +26,11 @@ const HeroSection = () => {
           </p>
         </div>
         <div id="section-hero-button">
-          <button type="button" className="button-yellow button-text">
+          <button
+            type="button"
+            className="button-yellow button-text"
+            onClick={() => navigate("/book-a-table")}
+          >
             Reserve a table
           </button>
         </div>

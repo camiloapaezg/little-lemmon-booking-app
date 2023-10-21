@@ -1,0 +1,14 @@
+#booking-page-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  background-color: rgb(120, 151, 140);
+  padding: 1em 0em 2em 0em;
+}
+
+#booking-page-title {
+  margin: 0em auto 0em auto;
+  padding: 1em;
+  text-align: center;
+}

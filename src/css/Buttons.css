@@ -6,6 +6,11 @@
   font-weight: 600;
   padding: 1em;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.anchor-active {
+  text-decoration: underline;
 }
 
 .button-navigation:hover {

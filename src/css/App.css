@@ -8,6 +8,8 @@
 @import "TestimonialCard.css";
 @import "About.css";
 @import "Footer.css";
+@import "BookingPage.css";
+@import "BookingForm.css";
 
 * {
   margin: 0px;

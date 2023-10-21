@@ -1,5 +1,5 @@
 import SpecialsPanel from "./SpecialsPanel";
-import { specialsData } from "../data/specials";
+import { specialsData } from "../../data/specials";
 
 const Highlights = () => {
   const data = specialsData();

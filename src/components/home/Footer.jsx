@@ -1,4 +1,4 @@
-import logo from "../assets/logo_footer.png";
+import logo from "../../assets/logo_footer.png";
 import { IconFacebook, IconInstagram, IconTwitter } from "./Icons";
 
 const goToSection = (sectionId) => {
