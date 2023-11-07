@@ -1,34 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import SliderInput from "./SliderInput";
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer, useRef } from "react";
+import { occasions, updateTimes } from "../../data/formSelectData";
+import { initializeTimes } from "../../data/formSelectData";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const FormProperty = (props) => {
-  const [errorMessage, setErrorMessage] = useState("");
-  useEffect(() => {
-    setErrorMessage(props.error || "");
-  }, [props.error]);
+let reducer = (state, action) => {
+  if (action.date) {
+    return updateTimes(action.date);
+  }
+};
 
-  const errorLabelStyle = {
-    textAlign: "start",
-    color: "rgb(189, 0, 0)",
-    padding: "0.3em 0em 0.3em 0em",
-  };
-
-  return (
-    <div className="form-property-container">
-      <div className="form-property-label">
-        <label htmlFor={props.id} className="lead-text">
-          {props.label}
-        </label>
-      </div>
-      <div className="form-property-input">
-        {props.children}
-        <strong className="error-text" style={errorLabelStyle}>
-          {props.visited && errorMessage && errorMessage}
-        </strong>
-      </div>
-    </div>
-  );
+const getCurrentDate = () => {
+  let d = new Date();
+  d.setDate(d.getDate() + 5);
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 };
 
 const validate = (values) => {
@@ -61,6 +48,10 @@ const validate = (values) => {
     errors.email = "Required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email address";
+  }
+
+  if (!values.confirmEmail) {
+    errors.confirmEmail = "Required";
   } else if (
     values.confirmEmail?.trim().toLowerCase() !==
     values.email?.trim().toLowerCase()
@@ -72,17 +63,42 @@ const validate = (values) => {
   return errors;
 };
 
-const getCurrentDate = () => {
-  let d = new Date();
-  d.setDate(d.getDate() + 5);
-  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+const FormProperty = (props) => {
+  const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    setErrorMessage(props.error || "");
+  }, [props.error]);
+
+  const errorLabelStyle = {
+    textAlign: "start",
+    color: "rgb(189, 0, 0)",
+    padding: "0.3em 0em 0.3em 0em",
+  };
+
+  return (
+    <div className="form-property-container">
+      <div className="form-property-label">
+        <label htmlFor={props.id} className="lead-text">
+          {props.label}
+        </label>
+      </div>
+      <div className="form-property-input">
+        {props.children}
+        <strong className="error-text" style={errorLabelStyle}>
+          {props.visited && errorMessage && errorMessage}
+        </strong>
+      </div>
+    </div>
+  );
 };
 
 const BookingForm = () => {
+  const [state, dispatch] = useReducer(reducer, initializeTimes());
+  const captchaRef = useRef(null);
   const formik = useFormik({
     initialValues: {
       date: getCurrentDate(),
-      time: "20:00",
+      time: state?.[0]?.value,
       guestsCount: 2,
       occasion: "noSpecified",
       firstName: "",
@@ -93,16 +109,29 @@ const BookingForm = () => {
     },
     validate,
     onSubmit: (values) => {
+      console.log(captchaRef.current.getValue());
       alert(JSON.stringify(values, null, 2));
     },
   });
 
-  const onSubmit = (formData) => {
-    console.log(formData);
+  useEffect(() => {
+    if (!state || !formik.values) {
+      return;
+    }
+
+    let availableTimes = state.map((t) => t.value);
+    if (!availableTimes.includes(formik.values.time)) {
+      formik.values.time = availableTimes[0];
+    }
+  }, [state]);
+
+  const onDateChanged = (ev) => {
+    formik.handleChange(ev);
+    dispatch({ date: new Date(ev.target.value) });
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <div id="booking-form-container">
         <div>
           <h4 className="form-section-title section-title">
@@ -120,7 +149,7 @@ const BookingForm = () => {
             id="date"
             name="date"
             className="input-element input-element-centered card-text"
-            onChange={formik.handleChange}
+            onChange={onDateChanged}
             onBlur={formik.handleBlur}
             value={formik.values.date}
           />
@@ -131,15 +160,20 @@ const BookingForm = () => {
           visited={formik.touched.time}
           error={formik.errors.time}
         >
-          <input
-            type="time"
-            id="time"
+          <select
             name="time"
-            className="input-element input-element-centered card-text"
+            id="time"
+            className="input-select-element card-text input-element-centered"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.time}
-          />
+          >
+            {state?.map((t) => (
+              <option key={t.value} value={t.value}>
+                {t.text}
+              </option>
+            ))}
+          </select>
         </FormProperty>
         <FormProperty
           id="guestsCount"
@@ -150,8 +184,8 @@ const BookingForm = () => {
           <SliderInput
             id="guestsCount"
             name="guestsCount"
-            min={2}
-            max={6}
+            min={1}
+            max={10}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.guestsCount}
@@ -161,15 +195,16 @@ const BookingForm = () => {
           <select
             name="occasion"
             id="occasion"
-            className="input-element card-text input-element-centered"
+            className="input-select-element card-text input-element-centered"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.occasion}
           >
-            <option value="noSpecified">No specified</option>
-            <option value="birthday">Birthday</option>
-            <option value="anniversary">Anniversary</option>
-            <option value="christmas">Christmas</option>
+            {occasions.map((occasion) => (
+              <option key={occasion.value} value={occasion.value}>
+                {occasion.text}
+              </option>
+            ))}
           </select>
         </FormProperty>
         <div>
@@ -250,6 +285,7 @@ const BookingForm = () => {
             value={formik.values.comments}
           />
         </FormProperty>
+        <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} />
         <div style={{ alignSelf: "center", marginTop: "1em" }}>
           <button type="submit" className="button-yellow button-text">
             Send request
