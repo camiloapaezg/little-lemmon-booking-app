@@ -13,7 +13,7 @@ const SpecialsPanel = ({ imageUrl, title, price, description }) => {
         </div>
         <div className="specials-panel-title">
           <div>
-            <h4 className="card-title">{title}</h4>
+            <h3 className="card-title">{title}</h3>
           </div>
           <div className="specials-panel-price">
             <span className="highlight-text">{price}</span>

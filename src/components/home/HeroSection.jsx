@@ -13,9 +13,9 @@ const HeroSection = () => {
           </h1>
         </div>
         <div>
-          <h3 id="section-hero-subtitle" className="subtitle">
+          <h2 id="section-hero-subtitle" className="subtitle">
             Chicago
-          </h3>
+          </h2>
         </div>
         <div>
           <p id="section-hero-description" className="lead-text">

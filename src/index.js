@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/home/Home";
 import BookingPage from "./components/bookingTable/BookingPage";
 import Layout from "./components/Layout";
+import ConfirmedBooking from "./components/bookingTable/ConfirmedBooking";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/book-a-table",
         element: <BookingPage />,
+      },
+      {
+        path: "/book-a-table/:confirmed",
+        element: <ConfirmedBooking />,
       },
     ],
   },

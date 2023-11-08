@@ -8,7 +8,7 @@ const Stars = (rate) => {
   return result;
 };
 
-const TestimonialCard = ({ rate , imgSrc, name, review }) => {
+const TestimonialCard = ({ rate, imgSrc, name, review }) => {
   return (
     <div
       id="testimonial-card-container"
@@ -18,12 +18,12 @@ const TestimonialCard = ({ rate , imgSrc, name, review }) => {
         {React.Children.map(Stars(rate), (star) => star)}
       </div>
       <div id="testimonial-card-image">
-         <figure>
-            <img src={imgSrc} alt="A person" />
-          </figure>
+        <figure>
+          <img src={imgSrc} alt="A person" />
+        </figure>
       </div>
       <div id="testimonial-card-name">
-        <h5 className="card-title">{name}</h5>
+        <h3 className="card-title">{name}</h3>
       </div>
       <div id="testimonial-card-review">
         <q className="card-text">{review}</q>

@@ -29,16 +29,23 @@
   padding: 0.8em;
   border: 0px;
   align-content: center;
+}
+
+.button-yellow:enabled {
   cursor: pointer;
 }
 
-.button-yellow:hover {
+.button-yellow:enabled:hover {
   background-color: rgb(248, 228, 130);
 }
 
-.button-yellow:active {
+.button-yellow:enabled:active {
   background-color: rgb(248, 228, 130);
   transform: scale(0.95);
+}
+
+.button-yellow:disabled {
+  background-color: rgb(177, 177, 177);
 }
 
 .anchor-tag {

@@ -1,0 +1,19 @@
+#section-confirmed-booking {
+  background-color: rgb(120, 151, 140);
+  padding: 1em 0em 2em 0em;
+}
+
+#confirmed-booking-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1em;
+  max-width: 45em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.confirmed-booking-item {
+  padding: 1em;
+}

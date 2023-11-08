@@ -10,6 +10,7 @@
 @import "Footer.css";
 @import "BookingPage.css";
 @import "BookingForm.css";
+@import "ConfirmedBooking.css";
 
 * {
   margin: 0px;

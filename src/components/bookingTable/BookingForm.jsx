@@ -2,19 +2,31 @@
 import SliderInput from "./SliderInput";
 import { useFormik } from "formik";
 import { useEffect, useState, useReducer, useRef } from "react";
-import { occasions, updateTimes } from "../../data/formSelectData";
-import { initializeTimes } from "../../data/formSelectData";
+import { occasions } from "../../data/formSelectData";
 import ReCAPTCHA from "react-google-recaptcha";
+import { fetchAPI, submitAPI } from "../../utils/bookingAPI";
+import { useNavigate } from "react-router-dom";
 
-let reducer = (state, action) => {
-  if (action.date) {
-    return updateTimes(action.date);
+const errorLabelStyle = {
+  textAlign: "start",
+  color: "rgb(189, 0, 0)",
+  padding: "0.3em 0em 0.3em 0em",
+};
+
+const buildTimeOptions = (times) => {
+  return times.map((time) => {
+    return { value: time, text: time };
+  });
+};
+
+const reducer = (_, action) => {
+  if (action.payload) {
+    return buildTimeOptions(action.payload);
   }
 };
 
 const getCurrentDate = () => {
   let d = new Date();
-  d.setDate(d.getDate() + 5);
   return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 };
 
@@ -69,12 +81,6 @@ const FormProperty = (props) => {
     setErrorMessage(props.error || "");
   }, [props.error]);
 
-  const errorLabelStyle = {
-    textAlign: "start",
-    color: "rgb(189, 0, 0)",
-    padding: "0.3em 0em 0.3em 0em",
-  };
-
   return (
     <div className="form-property-container">
       <div className="form-property-label">
@@ -93,8 +99,10 @@ const FormProperty = (props) => {
 };
 
 const BookingForm = () => {
-  const [state, dispatch] = useReducer(reducer, initializeTimes());
+  const [state, dispatch] = useReducer(reducer, []);
+  const [reCaptchaConfirmed, setReCaptchaConfirmed] = useState(undefined);
   const captchaRef = useRef(null);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       date: getCurrentDate(),
@@ -108,12 +116,30 @@ const BookingForm = () => {
       comments: "",
     },
     validate,
-    onSubmit: (values) => {
-      console.log(captchaRef.current.getValue());
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (formData) => {
+      let token = captchaRef.current.getValue();
+      setReCaptchaConfirmed(token !== "");
+      if (token !== "") {
+        var response = submitAPI(formData);
+        navigate(`/book-a-table/${response}`);
+      }
     },
   });
 
+  // Fetches an available times options list.
+  useEffect(() => {
+    let date = "";
+    if (formik.values?.date) {
+      date = formik.values.date;
+    } else {
+      date = formik.initialValues.date;
+    }
+
+    var availableTimes = fetchAPI(date);
+    dispatch({ payload: availableTimes });
+  }, [formik?.values?.date]);
+
+  // Sets a new default time when the state changes.
   useEffect(() => {
     if (!state || !formik.values) {
       return;
@@ -125,18 +151,13 @@ const BookingForm = () => {
     }
   }, [state]);
 
-  const onDateChanged = (ev) => {
-    formik.handleChange(ev);
-    dispatch({ date: new Date(ev.target.value) });
-  };
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <div id="booking-form-container">
         <div>
-          <h4 className="form-section-title section-title">
+          <h3 className="form-section-title section-title">
             Reservation details
-          </h4>
+          </h3>
         </div>
         <FormProperty
           id="date"
@@ -149,7 +170,7 @@ const BookingForm = () => {
             id="date"
             name="date"
             className="input-element input-element-centered card-text"
-            onChange={onDateChanged}
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.date}
           />
@@ -208,7 +229,7 @@ const BookingForm = () => {
           </select>
         </FormProperty>
         <div>
-          <h4 className="form-section-title section-title">Personal details</h4>
+          <h3 className="form-section-title section-title">Personal details</h3>
         </div>
         <FormProperty
           id="firstName"
@@ -285,9 +306,28 @@ const BookingForm = () => {
             value={formik.values.comments}
           />
         </FormProperty>
-        <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} />
+        <ReCAPTCHA
+          sitekey={process.env.REACT_APP_SITE_KEY}
+          ref={captchaRef}
+          style={{ alignSelf: "center", marginTop: "1em" }}
+        />
+        {reCaptchaConfirmed !== undefined && !reCaptchaConfirmed && (
+          <strong
+            className="error-text"
+            style={{ ...errorLabelStyle, alignSelf: "center" }}
+            aria-description="Please validate the reCAPTCHA"
+          >
+            Please validate the reCAPTCHA
+          </strong>
+        )}
         <div style={{ alignSelf: "center", marginTop: "1em" }}>
-          <button type="submit" className="button-yellow button-text">
+          <button
+            type="submit"
+            className="button-yellow button-text"
+            disabled={
+              Object.keys(formik.touched).length === 0 || !formik.isValid
+            }
+          >
             Send request
           </button>
         </div>
