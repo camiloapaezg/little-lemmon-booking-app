@@ -84,7 +84,7 @@ const FormProperty = (props) => {
   return (
     <div className="form-property-container">
       <div className="form-property-label">
-        <label htmlFor={props.id} className="lead-text">
+        <label htmlFor={props.inputId} className="lead-text">
           {props.label}
         </label>
       </div>
@@ -160,7 +160,7 @@ const BookingForm = () => {
           </h3>
         </div>
         <FormProperty
-          id="date"
+          inputId="date"
           label="Date: *"
           visited={formik.touched.date}
           error={formik.errors.date}
@@ -169,6 +169,7 @@ const BookingForm = () => {
             type="date"
             id="date"
             name="date"
+            aria-labelledby="date"
             className="input-element input-element-centered card-text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -176,7 +177,7 @@ const BookingForm = () => {
           />
         </FormProperty>
         <FormProperty
-          id="time"
+          inputId="time"
           label="Time: *"
           visited={formik.touched.time}
           error={formik.errors.time}
@@ -184,6 +185,7 @@ const BookingForm = () => {
           <select
             name="time"
             id="time"
+            aria-labelledby="time"
             className="input-select-element card-text input-element-centered"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -197,7 +199,7 @@ const BookingForm = () => {
           </select>
         </FormProperty>
         <FormProperty
-          id="guestsCount"
+          inputId="guestsCount"
           label="Number of guests: *"
           visited={formik.touched.guestsCount}
           error={formik.errors.guestsCount}
@@ -205,6 +207,7 @@ const BookingForm = () => {
           <SliderInput
             id="guestsCount"
             name="guestsCount"
+            aria-labelledby="guessCount"
             min={1}
             max={10}
             onChange={formik.handleChange}
@@ -212,10 +215,11 @@ const BookingForm = () => {
             value={formik.values.guestsCount}
           />
         </FormProperty>
-        <FormProperty id="occasion" label="Occasion:">
+        <FormProperty inputId="occasion" label="Occasion:">
           <select
             name="occasion"
             id="occasion"
+            aria-labelledby="occasion"
             className="input-select-element card-text input-element-centered"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -232,7 +236,7 @@ const BookingForm = () => {
           <h3 className="form-section-title section-title">Personal details</h3>
         </div>
         <FormProperty
-          id="firstName"
+          inputId="firstName"
           label="First name: *"
           visited={formik.touched.firstName}
           error={formik.errors.firstName}
@@ -241,6 +245,7 @@ const BookingForm = () => {
             type="text"
             id="firstName"
             name="firstName"
+            aria-labelledby="firstName"
             className="input-element card-text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -248,7 +253,7 @@ const BookingForm = () => {
           />
         </FormProperty>
         <FormProperty
-          id="lastName"
+          inputId="lastName"
           label="Last name: *"
           visited={formik.touched.lastName}
           error={formik.errors.lastName}
@@ -257,6 +262,7 @@ const BookingForm = () => {
             type="text"
             id="lastName"
             name="lastName"
+            aria-labelledby="lastName"
             className="input-element card-text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -264,7 +270,7 @@ const BookingForm = () => {
           />
         </FormProperty>
         <FormProperty
-          id="email"
+          inputId="email"
           label="Email address: *"
           visited={formik.touched.email}
           error={formik.errors.email}
@@ -273,6 +279,7 @@ const BookingForm = () => {
             type="email"
             id="email"
             name="email"
+            aria-labelledby="email"
             className="input-element card-text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -280,7 +287,7 @@ const BookingForm = () => {
           />
         </FormProperty>
         <FormProperty
-          id="confirmEmail"
+          inputId="confirmEmail"
           label="Confirm email address: *"
           visited={formik.touched.confirmEmail}
           error={formik.errors.confirmEmail}
@@ -289,16 +296,18 @@ const BookingForm = () => {
             type="confirmEmail"
             id="confirmEmail"
             name="confirmEmail"
+            aria-labelledby="confirmEmail"
             className="input-element card-text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmEmail}
           />
         </FormProperty>
-        <FormProperty id="comments" label="Additional comments:">
+        <FormProperty inputId="comments" label="Additional comments:">
           <textarea
             id="comments"
             name="comments"
+            aria-labelledby="comments"
             className="input-element card-text"
             rows={5}
             onChange={formik.handleChange}
